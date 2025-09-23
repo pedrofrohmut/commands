@@ -34,7 +34,10 @@ dotnet new tool-manifest
 dotnet tool install --local dotnet-ef --version 8.0.8 --allow-downgrade
 
 # Update database (apply migrations if needed)
-dotnet ef database update --project WhiteLagoon.Web
+dotnet ef database update
 
 # Add initial migration (have to provide the dbContext project with -p and startup project -s)
 dotnet ef migrations add Initial -p ./WhiteLagoon.Infrastructure -s ./WhiteLagoon.Web
+
+# To apply an older migration
+dotnet ef database update <PreviousMigrationName>
