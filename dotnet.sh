@@ -40,4 +40,18 @@ dotnet ef database update
 dotnet ef migrations add Initial -p ./WhiteLagoon.Infrastructure -s ./WhiteLagoon.Web
 
 # To apply an older migration
-dotnet ef database update <PreviousMigrationName>
+dotnet ef database update MyPreviousMigrationName
+
+# CQRS - Command/Query Responsibility Segregation ######################################################################
+
+# CQRS having more than 1 db you have to specify the context to use
+dotnet ef migrations add ReadDbInitial --context ReadDbContext --output-dir Migrations/Read
+
+# CQRS update read (query) database
+dotnet ef database update --context ReadDbContext
+
+# CQRS migrations for the second database
+dotnet ef migrations add WriteDbInitial --context WriteDbContext --output-dir Migrations/Write
+
+# CQRS update write (command) database
+dotnet ef database update --context WhiteDbContext
