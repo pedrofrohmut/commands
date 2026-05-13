@@ -1,0 +1,8 @@
+# Enter command mode
+C-b :
+
+# Enter Vi Copy mode
+C-b [
+
+# Change the CWD of tmux without exiting
+attach -c /new/path

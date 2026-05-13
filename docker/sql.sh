@@ -15,3 +15,5 @@ sudo docker cp ./my_file.sql my-container:/my-file.sql
 
 # Execute the file in the postgres
 sudo docker exec -i my-container psql -U postgres -f /my-file.sql
+
+sudo docker exec -i my-container psql -U db_user -f /my-file.sql db_name
